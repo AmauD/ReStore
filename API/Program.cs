@@ -20,7 +20,7 @@ namespace API
             try 
             {
                 context.Database.Migrate();
-                DbInitializer.Initializer(context);
+                DbInitializer.Initialize(context);
             } 
             catch (Exception ex) 
             {

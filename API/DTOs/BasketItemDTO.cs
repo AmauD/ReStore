@@ -1,6 +1,6 @@
 namespace API.DTOs
 {
-    public class BasketItemDTO
+    public class BasketItemDto
     {
         public int ProductId { get; set; }
         public string Name { get; set; }
@@ -9,6 +9,5 @@ namespace API.DTOs
         public string Brand { get; set; }
         public string Type { get; set; }
         public int Quantity { get; set; }
-
     }
 }

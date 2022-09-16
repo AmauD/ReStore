@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -14,18 +12,18 @@ namespace API.Middleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionMiddleware> _logger;
-        public readonly IHostEnvironment _env;
-        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostEnvironment env)
+        private readonly IHostEnvironment _env;
+        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, 
+            IHostEnvironment env)
         {
             _env = env;
             _logger = logger;
             _next = next;
-
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
-            try
+            try 
             {
                 await _next(context);
             }
@@ -42,10 +40,8 @@ namespace API.Middleware
                     Title = ex.Message
                 };
 
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                };
+                var options = new JsonSerializerOptions{PropertyNamingPolicy = 
+                    JsonNamingPolicy.CamelCase};
 
                 var json = JsonSerializer.Serialize(response, options);
 
