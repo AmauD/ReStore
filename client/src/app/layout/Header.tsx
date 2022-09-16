@@ -76,7 +76,7 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                                 component={NavLink}
                                 to={path}
                                 key={path}
-                                sx={{ color: 'inherit', typography: 'h6' }}
+                                sx={navStyles}
                             >
                                 {title.toUpperCase()}
                             </ListItem>
