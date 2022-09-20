@@ -17,7 +17,7 @@ const sortOptions = [
 
 export default function Catalog() {
     const products = useAppSelector(productSelectors.selectAll);
-    const { productsLoaded, status, filtersLoaded, brands, types, productParams, metaData } = useAppSelector((state: any) => state.catalog);
+    const { productsLoaded, filtersLoaded, brands, types, productParams, metaData } = useAppSelector((state: any) => state.catalog);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function Catalog() {
         if (!filtersLoaded) dispatch(fetchFilters());
     }, [dispatch, filtersLoaded])
 
-    if (status.includes('pending') || !metaData) return <LoadingComponent message='Loading products...' />
+    if (!filtersLoaded) return <LoadingComponent message='Loading products...' />
 
     return (
         <Grid container columnSpacing={4}>

@@ -22,8 +22,8 @@ function getAxiosParams(productParams: ProductParams) {
     params.append('pageSize', productParams.pageSize.toString());
     params.append('orderBy', productParams.orderBy);
     if (productParams.searchTerm) params.append('searchTerm', productParams.searchTerm);
-    if (productParams.brands) params.append('brands', productParams.brands.toString());
-    if (productParams.types) params.append('types', productParams.types.toString());
+    if (productParams.brands.length > 0) params.append('brands', productParams.brands.toString());
+    if (productParams.types.length > 0) params.append('types', productParams.types.toString());
 
     return params;
 }
